@@ -10,7 +10,7 @@ public class TicTacToe {
     public TicTacToe(){
         this.gameBoard = new GameBoard();
     }
-//test
+//tes
     public boolean detectWin(Sign sign){
         int counter = 0;
         for(int i = 0; i < 3; i++){
