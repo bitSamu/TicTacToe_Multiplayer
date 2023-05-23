@@ -1,18 +1,28 @@
 package com.github.bitsamu.game.logic.board;
 
+import com.github.bitsamu.game.logic.windetector.WinDetector;
 import com.github.bitsamu.game.logic.sign.Sign;
 
-import java.util.HashMap;
-import java.util.Map;
-
+/**
+ * This class represents the Gameboard
+ */
 public class GameBoard {
-    private Sign[][] gameBoard = {
+
+    private WinDetector winDetector;
+    public Sign[][] gameBoard = {
             {Sign.EMPTY, Sign.EMPTY, Sign.EMPTY},
             {Sign.EMPTY, Sign.EMPTY, Sign.EMPTY},
             {Sign.EMPTY, Sign.EMPTY, Sign.EMPTY}
     };
 
-    public GameBoard(){
+    public GameBoard(){}
+
+    public void addWinDetector(WinDetector winDetector){
+        this.winDetector = winDetector;
+    }
+
+    public boolean detectWin(Sign sign){
+        return winDetector.detectWin(gameBoard, sign);
     }
 
     public Sign getSign(int x, int y){
@@ -20,7 +30,6 @@ public class GameBoard {
     }
 
     public void setGameBoard(int x, int y, Sign sign){
-        System.out.println(x + " " +y);
         gameBoard[x - 1][y - 1] = sign;
     }
 }
